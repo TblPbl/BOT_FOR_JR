@@ -1,4 +1,6 @@
 from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
+from aiogram.client.default import DefaultBotProperties
 
 import os
 import asyncio
@@ -7,7 +9,12 @@ import misc
 
 from handlers import main_router
 
-bot = Bot(token=os.getenv('BOT_TOKEN'))
+bot = Bot(
+    token=os.getenv('BOT_TOKEN'),
+    default=DefaultBotProperties(
+        parse_mode=ParseMode.MARKDOWN,
+    )
+)
 dp = Dispatcher()
 
 
